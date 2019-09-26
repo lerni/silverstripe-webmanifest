@@ -49,7 +49,7 @@ class Webmanifest extends Controller
 
     public function WebmanifestArray()
     {
-        $fieldResult = [];
+        $mergedResult = [];
         $currentSiteConfig = SiteConfig::current_site_config();
 
         foreach($this->WebmanifestFieldsConfig() as $item) {
@@ -57,20 +57,17 @@ class Webmanifest extends Controller
             if($item['ConfigValue'] == 'SiteConfig') {
                 $webmanifestvalue = $item['SiteConfigField'];
                 if ($value = $currentSiteConfig->{$webmanifestvalue}) {
-                    $fieldResult[$webmanifestkey] = $value;
+                    $mergedResult[$webmanifestkey] = $value;
                 }
-            } elseif(substr($item['ConfigValue'], 0, 10 ) === 'SiteConfig') {
+            } elseif(!is_array($item['ConfigValue']) && substr($item['ConfigValue'], 0, 10 ) === 'SiteConfig') {
                 $potentialFieldArr = explode('.', $item['ConfigValue']);
                 if ($currentSiteConfig->hasField($potentialFieldArr[1]) && $currentSiteConfig->getField($potentialFieldArr[1])) {
-                    $fieldResult[$webmanifestkey] = $currentSiteConfig->getField($potentialFieldArr[1]);
+                    $mergedResult[$webmanifestkey] = $currentSiteConfig->getField($potentialFieldArr[1]);
                 }
             } elseif($item['ConfigValue']) {
-                $fieldResult[$webmanifestkey] = $item['ConfigValue'];
+                $mergedResult[$webmanifestkey] = $item['ConfigValue'];
             }
         }
-        $iconConfig['icons'] = self::config()->get('icons');
-
-        $mergedResult = array_merge($fieldResult, $iconConfig);
 
         if(!array_key_exists('lang', $mergedResult)) {
             $mergedResult['lang'] = i18n::get_locale();
