@@ -4,7 +4,6 @@ name: 'webmanifestconfig'
 SilverStripe\Control\Director:
   rules:
     "site.webmanifest": Kraftausdruck\Webmanifest\Webmanifest
-    webmanifest: Kraftausdruck\Webmanifest\Webmanifest # Useful for local testing.
 
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
@@ -14,14 +13,7 @@ Kraftausdruck\Webmanifest\Webmanifest:
   fields:
     name: 'SiteConfig.Title'
     short_name: 'SiteConfig'
-    start_url: ''
-    display: 'standalone'
-    background_color : '#fff'
-    theme_color : '#fff'
-    description: 'SiteConfig'
-    platform: ''
-    url: ''
-    related_applications: ''
+    description: 'SiteConfig.Tagline'
   icons:
     - src: '/android-chrome-192x192.png'
       sizes: '192x192'

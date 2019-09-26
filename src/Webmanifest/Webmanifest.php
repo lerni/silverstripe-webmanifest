@@ -2,7 +2,7 @@
 
 namespace Kraftausdruck\Webmanifest;
 
-use SilverStripe\Dev\Debug;
+use SilverStripe\i18n\i18n;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\HTTPResponse;
@@ -16,63 +16,6 @@ use SilverStripe\SiteConfig\SiteConfig;
  */
 class Webmanifest extends Controller
 {
-    /**
-     * @var string
-     */
-    private static $name = '';
-
-    /**
-     * @var string
-     */
-    private static $short_name = '';
-
-    /**
-     * @var string
-     */
-    private static $start_url = '.';
-
-    /**
-     * @var string
-     */
-    private static $display = '';
-
-    /**
-     * @var string
-     */
-    private static $background_color = '';
-
-    /**
-     * @var string
-     */
-    private static $theme_color = '';
-
-    /**
-     * @var string
-     */
-    private static $description = '';
-
-    /**
-     * @var string|array
-     */
-    private static $platform = '';
-
-    /**
-     * @var string
-     */
-    private static $url = '';
-
-    /**
-     * @var array
-     */
-    private static $icons = [];
-
-    /**
-     * @var array
-     */
-    private static $related_applications = [];
-
-//     private static $casting = [];
-
     /**
      * Generates the response containing the site.webmanifest content
      *
@@ -129,7 +72,11 @@ class Webmanifest extends Controller
 
         $mergedResult = array_merge($fieldResult, $iconConfig);
 
-         return $mergedResult;
+        if(!array_key_exists('lang', $mergedResult)) {
+            $mergedResult['lang'] = i18n::get_locale();
+        }
+
+        return $mergedResult;
     }
 
     public static function camelize($input, $separator = '_')

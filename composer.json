@@ -7,10 +7,13 @@
     "silverstripe",
     "webmanifest"
   ],
-  "homepage": "http://github.com/lerni/silverstripe-webmanifest",
+  "homepage": "https://github.com/lerni/silverstripe-webmanifest",
   "require": {
     "silverstripe/framework": "^4.0",
     "silverstripe/siteconfig": "^4.0"
+  },
+  "suggest": {
+      "jonom/silverstripe-text-target-length" : "Gives hints to match desired length."
   },
   "extra": {
     "installer-name": "webmanifest"

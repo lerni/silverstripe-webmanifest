@@ -4,7 +4,6 @@ namespace Kraftausdruck\Webmanifest\Extensions;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\TextField;
-use SilverStripe\Forms\HeaderField;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Core\Config\Config;
 use Kraftausdruck\Webmanifest\Webmanifest;
