@@ -1,6 +1,6 @@
 {
   "name": "lerni/silverstripe-webmanifest",
-  "description": "Simple webmanifest generation module for SilverStripe.",
+  "description": "webmanifest for SilverStripe per YML and/or SiteConfig",
   "type": "silverstripe-vendormodule",
   "license": "BSD-3-Clause",
   "keywords": [

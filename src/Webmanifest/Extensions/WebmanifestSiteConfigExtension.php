@@ -47,11 +47,21 @@ class WebmanifestSiteConfigExtension extends DataExtension
                     $field = TextField::create($SiteConfigField, $SiteConfigFieldLable);
                 }
 
-                if ($SiteConfigFieldLable == 'name' && class_exists(TextTargetLengthExtension::class)) {
-                    $field->setTargetLength(45, 20, 45);
+                if ($SiteConfigFieldLable == 'name') {
+                    if (class_exists(TextTargetLengthExtension::class)) {
+                        $field->setTargetLength(45, 20, 45);
+                    } else {
+                        $field->setDescription('max. 45');
+                        $field->setMaxLength('45');
+                    }
                 }
-                if ($SiteConfigFieldLable == 'short_name' && class_exists(TextTargetLengthExtension::class)) {
-                    $field->setTargetLength(12, 5, 12);
+                if ($SiteConfigFieldLable == 'short_name') {
+                    if (class_exists(TextTargetLengthExtension::class)) {
+                        $field->setTargetLength(12, 5, 12);
+                    } else {
+                        $field->setDescription('max. 12');
+                        $field->setMaxLength('12');
+                    }
                 }
 
                 $fields->addFieldToTab(
