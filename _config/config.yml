@@ -10,6 +10,7 @@ SilverStripe\SiteConfig\SiteConfig:
     - Kraftausdruck\Webmanifest\Extensions\WebmanifestSiteConfigExtension
 
 Kraftausdruck\Webmanifest\Webmanifest:
+  tab: 'Root.Webmanifest'
   fields:
     name: 'SiteConfig.Title'
     short_name: 'SiteConfig'

@@ -13,7 +13,8 @@
     "silverstripe/siteconfig": "^4.0"
   },
   "suggest": {
-      "jonom/silverstripe-text-target-length" : "Gives hints to match desired length."
+      "jonom/silverstripe-text-target-length" : "Gives hints to match desired length for name & short_name",
+      "tractorcow/silverstripe-colorpicker" : "Used for theme_color & background_color if available"
   },
   "extra": {
     "installer-name": "webmanifest"
