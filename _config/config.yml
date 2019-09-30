@@ -24,3 +24,10 @@ Kraftausdruck\Webmanifest\Webmanifest:
       - src: '/android-chrome-384x384.png'
         sizes: '384x384'
         type: 'image/png'
+---
+Only:
+  moduleexists: 'cms'
+---
+Page:
+  extensions:
+    - Kraftausdruck\Webmanifest\Extensions\WebmanifestPageExtension

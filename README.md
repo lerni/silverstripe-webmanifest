@@ -15,10 +15,7 @@ composer require lerni/silverstripe-webmanifest
 - tractorcow/silverstripe-colorpicker ^4
 
 ## Configuration
-You can set per yml-config whats in the manifests json. With 'SiteConfig' as value, properties are editable per SiteConfig in CMS (dev/build needed). Alternatively they can be set to other SiteConfig values like 'SiteConfig.Title'. If `lang` isn't specifically set, `i18n::get_locale()` 'll be used. With the default config (bellow) `name` is set to the value from `SiteConfig.Title`, for `short_name` a field is automatically added to SiteConfig. Further webmanifest values can be added like `background_color` or `icons` as strings or arrays. See the full list of settings [W3C](https://w3c.github.io/manifest/#webappmanifest-dictionary). The module doesn't add a Header-Tag to your HTML - you need to do this per `PHP` or in template.
-```php
-Requirements::insertHeadTags('<link rel="manifest" href="/site.webmanifest">');
-```
+You can set per yml-config whats in the manifests json. With 'SiteConfig' as value, properties are editable per SiteConfig in CMS (dev/build needed). Alternatively they can be set to other SiteConfig values like 'SiteConfig.Title'. If `lang` isn't specifically set, `i18n::get_locale()` 'll be used. With the default config (bellow) `name` is set to the value from `SiteConfig.Title`, for `short_name` a field is automatically added to SiteConfig. Further webmanifest values can be added like `background_color` or `icons` as strings or arrays. See the full list of settings [W3C](https://w3c.github.io/manifest/#webappmanifest-dictionary). If `Page` (CMS-Module) exist, the manifest 'll be linked with a Header-Tag (`<link rel="manifest" href="/site.webmanifest">`).
 ```yaml
 Kraftausdruck\Webmanifest\Webmanifest:
   fields:
