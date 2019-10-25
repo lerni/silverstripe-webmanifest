@@ -49,10 +49,10 @@ class WebmanifestSiteConfigExtension extends DataExtension
 
                 if ($SiteConfigFieldLable == 'name') {
                     if (class_exists(TextTargetLengthExtension::class)) {
-                        $field->setTargetLength(45, 20, 45);
+                        $field->setTargetLength(30, 20, 30);
                     } else {
-                        $field->setDescription('max. 45');
-                        $field->setMaxLength('45');
+                        $field->setDescription('max. 30');
+                        $field->setMaxLength('30');
                     }
                 }
                 if ($SiteConfigFieldLable == 'short_name') {

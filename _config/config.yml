@@ -12,8 +12,8 @@ SilverStripe\SiteConfig\SiteConfig:
 Kraftausdruck\Webmanifest\Webmanifest:
   tab: 'Root.Webmanifest'
   fields:
-    name: 'SiteConfig.Title'
-    short_name: 'SiteConfig'
+    name: 'SiteConfig.Title' # max. 30 charactes
+    short_name: 'SiteConfig' # max. 12 charactes
     description: 'SiteConfig.Tagline'
     start_url: '/home'
     background_color: '#fff'

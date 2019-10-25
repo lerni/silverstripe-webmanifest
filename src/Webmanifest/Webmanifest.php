@@ -70,7 +70,7 @@ class Webmanifest extends Controller
         }
 
         if(!array_key_exists('lang', $mergedResult)) {
-            $mergedResult['lang'] = i18n::get_locale();
+            $mergedResult['lang'] = substr(i18n::get_locale(), 0, 2);
         }
 
         return $mergedResult;
