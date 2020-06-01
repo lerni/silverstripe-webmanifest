@@ -45,6 +45,11 @@ class WebmanifestSiteConfigExtension extends DataExtension
                     $field = ColorField::create($SiteConfigField, $SiteConfigFieldLable);
                 } else {
                     $field = TextField::create($SiteConfigField, $SiteConfigFieldLable);
+                    $field->setAttribute('type', 'color');
+                }
+
+                if ($SiteConfigFieldLable == 'theme_color' || $SiteConfigFieldLable == 'background_color') {
+                    $field->setAttribute('type', 'color');
                 }
 
                 if ($SiteConfigFieldLable == 'name') {
