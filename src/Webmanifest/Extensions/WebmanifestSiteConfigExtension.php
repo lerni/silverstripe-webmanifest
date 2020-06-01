@@ -28,7 +28,7 @@ class WebmanifestSiteConfigExtension extends DataExtension
 
         Config::inst()->update($class, 'db', $db);
         // parent::add_to_class($class, $extensionClass, $args);
-    }  
+    }
 
     public function updateCMSFields(FieldList $fields)
     {
@@ -45,7 +45,6 @@ class WebmanifestSiteConfigExtension extends DataExtension
                     $field = ColorField::create($SiteConfigField, $SiteConfigFieldLable);
                 } else {
                     $field = TextField::create($SiteConfigField, $SiteConfigFieldLable);
-                    $field->setAttribute('type', 'color');
                 }
 
                 if ($SiteConfigFieldLable == 'theme_color' || $SiteConfigFieldLable == 'background_color') {
@@ -66,6 +65,15 @@ class WebmanifestSiteConfigExtension extends DataExtension
                     } else {
                         $field->setDescription('max. 12');
                         $field->setMaxLength('12');
+                    }
+                }
+
+                if ($SiteConfigFieldLable == 'description') {
+                    if (class_exists(TextTargetLengthExtension::class)) {
+                        $field->setTargetLength(132, 20, 132);
+                    } else {
+                        $field->setDescription('max. 132');
+                        $field->setMaxLength('132');
                     }
                 }
 

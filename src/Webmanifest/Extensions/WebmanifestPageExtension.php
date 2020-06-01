@@ -5,6 +5,7 @@ namespace Kraftausdruck\Webmanifest\Extensions;
 use Kraftausdruck\Webmanifest\Webmanifest;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
+use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
 
 
