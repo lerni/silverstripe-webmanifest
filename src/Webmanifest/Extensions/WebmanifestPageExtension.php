@@ -14,6 +14,10 @@ class WebmanifestPageExtension extends Extension
     public function contentControllerInit($controller)
     {
         Requirements::insertHeadTags('<link rel="manifest" href="/site.webmanifest">');
+
+        if($this->webmanifest_theme_color()) {
+            Requirements::insertHeadTags('<meta name="theme-color" content="'. $this->webmanifest_theme_color() .'">');
+        }
     }
 
     public function webmanifest_theme_color()
@@ -34,6 +38,5 @@ class WebmanifestPageExtension extends Extension
         }
 
         return $theme_color;
-
     }
 }
