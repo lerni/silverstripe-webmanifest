@@ -1,6 +1,6 @@
 {
   "name": "lerni/silverstripe-webmanifest",
-  "description": "webmanifest for SilverStripe per YML and/or SiteConfig",
+  "description": "webmanifest for Silverstripe per YML and/or SiteConfig",
   "type": "silverstripe-vendormodule",
   "license": "BSD-3-Clause",
   "keywords": [
@@ -9,8 +9,8 @@
   ],
   "homepage": "https://github.com/lerni/silverstripe-webmanifest",
   "require": {
-    "silverstripe/framework": "^4.0",
-    "silverstripe/siteconfig": "^4.0"
+    "silverstripe/framework": "^4.0 || ^5.0",
+    "silverstripe/siteconfig": "^4.0 || ^5.0"
   },
   "suggest": {
       "jonom/silverstripe-text-target-length" : "Gives hints to match desired length for name & short_name",
@@ -18,5 +18,10 @@
   },
   "extra": {
     "installer-name": "webmanifest"
+  },
+  "autoload": {
+	  "psr-4": {
+		  "Kraftausdruck\\Webmanifest\\": "src/webmanifest/"
+	  }
   }
 }

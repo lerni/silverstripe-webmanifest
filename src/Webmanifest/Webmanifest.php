@@ -26,19 +26,19 @@ class Webmanifest extends Controller
         return HTTPResponse::create(
             json_encode($this->WebmanifestArray()),
             200
-        )
-        ->addHeader(
+        )->addHeader(
             'Content-Type',
             'application/manifest+json; charset="utf-8"'
         );
     }
 
-    public static function WebmanifestFieldsConfig() {
+    public static function WebmanifestFieldsConfig()
+    {
         $config = self::config()->get('fields');
         $configkeys = array_keys($config);
         $dbfields = [];
         $i = 0;
-        foreach($configkeys as $key) {
+        foreach ($configkeys as $key) {
             $dbfields[$i]['Webmanifest'] = $key;
             $dbfields[$i]['ConfigValue'] = $config[$key];
             $dbfields[$i]['SiteConfigField'] = 'Webmanifest' . Webmanifest::camelize($key);
@@ -52,24 +52,24 @@ class Webmanifest extends Controller
         $mergedResult = [];
         $currentSiteConfig = SiteConfig::current_site_config();
 
-        foreach($this->WebmanifestFieldsConfig() as $item) {
-            $webmanifestkey = $item['Webmanifest']; 
-            if($item['ConfigValue'] == 'SiteConfig') {
+        foreach ($this->WebmanifestFieldsConfig() as $item) {
+            $webmanifestkey = $item['Webmanifest'];
+            if ($item['ConfigValue'] == 'SiteConfig') {
                 $webmanifestvalue = $item['SiteConfigField'];
                 if ($value = $currentSiteConfig->{$webmanifestvalue}) {
                     $mergedResult[$webmanifestkey] = $value;
                 }
-            } elseif(!is_array($item['ConfigValue']) && substr($item['ConfigValue'], 0, 10 ) === 'SiteConfig') {
+            } elseif (!is_array($item['ConfigValue']) && substr($item['ConfigValue'], 0, 10) === 'SiteConfig') {
                 $potentialFieldArr = explode('.', $item['ConfigValue']);
                 if ($currentSiteConfig->hasField($potentialFieldArr[1]) && $currentSiteConfig->getField($potentialFieldArr[1])) {
                     $mergedResult[$webmanifestkey] = $currentSiteConfig->getField($potentialFieldArr[1]);
                 }
-            } elseif($item['ConfigValue']) {
+            } elseif ($item['ConfigValue']) {
                 $mergedResult[$webmanifestkey] = $item['ConfigValue'];
             }
         }
 
-        if(!array_key_exists('lang', $mergedResult)) {
+        if (!array_key_exists('lang', $mergedResult)) {
             $mergedResult['lang'] = substr(i18n::get_locale(), 0, 2);
         }
 

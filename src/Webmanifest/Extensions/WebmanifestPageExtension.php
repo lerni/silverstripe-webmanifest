@@ -2,11 +2,11 @@
 
 namespace Kraftausdruck\Webmanifest\Extensions;
 
-use Kraftausdruck\Webmanifest\Webmanifest;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Extension;
-use SilverStripe\SiteConfig\SiteConfig;
 use SilverStripe\View\Requirements;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\SiteConfig\SiteConfig;
+use Kraftausdruck\Webmanifest\Webmanifest;
 
 
 class WebmanifestPageExtension extends Extension
@@ -15,8 +15,8 @@ class WebmanifestPageExtension extends Extension
     {
         Requirements::insertHeadTags('<link rel="manifest" href="/site.webmanifest">');
 
-        if($this->webmanifest_theme_color()) {
-            Requirements::insertHeadTags('<meta name="theme-color" content="'. $this->webmanifest_theme_color() .'">');
+        if ($this->webmanifest_theme_color()) {
+            Requirements::insertHeadTags('<meta name="theme-color" content="' . $this->webmanifest_theme_color() . '">');
         }
     }
 
@@ -24,16 +24,13 @@ class WebmanifestPageExtension extends Extension
     {
         $theme_color = '';
 
-        if ($SiteConfig = SiteConfig::current_site_config())
-        {
-            if ($SiteConfig->WebmanifestThemeColor && $SiteConfig->WebmanifestThemeColor != 'SiteConfig')
-            {
+        if ($SiteConfig = SiteConfig::current_site_config()) {
+            if ($SiteConfig->WebmanifestThemeColor && $SiteConfig->WebmanifestThemeColor != 'SiteConfig') {
                 $theme_color = $SiteConfig->WebmanifestThemeColor;
             }
         }
 
-        if (!$theme_color)
-        {
+        if (!$theme_color) {
             $theme_color = Config::inst()->get(Webmanifest::class, 'theme_color');
         }
 
