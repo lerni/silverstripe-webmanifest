@@ -26,7 +26,7 @@ class WebmanifestSiteConfigExtension extends DataExtension
             }
         }
 
-        Config::inst()->update($class, 'db', $db);
+        Config::inst()->merge($class, 'db', $db);
         // parent::add_to_class($class, $extensionClass, $args);
     }
 
