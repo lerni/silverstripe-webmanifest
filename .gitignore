@@ -4,3 +4,4 @@
 **/*.map
 **/.idea
 **/todo.txt
+.vscode

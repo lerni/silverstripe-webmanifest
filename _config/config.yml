@@ -25,6 +25,7 @@ Kraftausdruck\Webmanifest\Webmanifest:
       - src: "/icon-512.png"
         sizes: "512x512"
         type: "image/png"
+
 ---
 Only:
   moduleexists: "cms"
@@ -32,3 +33,7 @@ Only:
 Page:
   extensions:
     - Kraftausdruck\Webmanifest\Extensions\WebmanifestPageExtension
+
+SilverStripe\Admin\LeftAndMain:
+  extensions:
+    - Kraftausdruck\Webmanifest\Extensions\LeftAndMainManifestExtension
